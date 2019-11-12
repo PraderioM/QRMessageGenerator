@@ -1,11 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<title> Simplex homology calculator </title>
+<title> QR message generator </title>
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-1" />
     <link rel="stylesheet" type="text/css" href="static/stylesheets/style.css"/>
     <script language="JavaScript" src="main.js" type="application/javascript"></script>
-    <script language="JavaScript" src="qrcode.js" type="application/javascript"></script>
+    <script type="text/javascript" src="davidshimjs-qrcodejs/jquery.min.js"></script>
+    <script language="JavaScript" src="davidshimjs-qrcodejs/qrcode.js" type="application/javascript"></script>
     <noscript> you need javascript to continue </noscript>
 <body>
 <div>
@@ -16,7 +17,7 @@
         <br>
         <div id="emailListDiv">
         </div>
-        <button onclick="addEmail()" class="btn btn-primary">Add e-mail</button>
+        <button id="addEmailBtn" class="btn btn-primary">Add e-mail</button>
     </div>
     <!--endregion-->
 
@@ -36,11 +37,21 @@
 
     <!--qr code view-->
     <br>
-    <button onclick="generateQR()" class="btn btn-primary">Generate QR</button>
+    <br>
+
+    <label for="height">QR code height</label>
+    <input type="text" id="height" placeholder="200" value="200" class="input input-border"/>
+
+    <label for="width">QR code width</label>
+    <input type="text" id="width" placeholder="200" value="200" class="input input-border"/>
+
+    <button id="generateQRBtn" class="btn btn-primary">Generate QR</button>
+    <div id="qrCode" style="width:150pt; height:150pt; margin-top:2pt;"></div>
     <!--endregion-->
 </div>
 <script language="JavaScript" type="application/javascript">
     let emailList = [];
+    document.addEventListener('DOMContentLoaded', init, false);
 </script>
 </body>
 </html>
