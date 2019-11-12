@@ -48,3 +48,21 @@
 .size-input {
     column-width: 10px;
 }
+
+
+.generate-qr-btn {
+    font-size: 13px;
+    line-height: 46px;
+    font-weight: bold;
+    font-style: normal;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 0 25px;
+    cursor: pointer;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 20px;
+    background-color: #15ff00a6;
+}
