@@ -19,7 +19,7 @@ function updateEmailList() {
     let innerHTML = '';
     for (let i=0; i< emailList.length; i++) {
         innerHTML += '<br>';
-        innerHTML += `<label for="email${i}" class = "vertical-center left email-label" >e-mail ${i+1}: ${emailList[i]}</label>`;
+        innerHTML += `<label for="email${i}" class = "vertical-center left label" >e-mail ${i+1}: ${emailList[i]}</label>`;
         innerHTML += `<button class="remove-button vertical-center right" id="email${i}" onclick="removeEmail(${i})" >-</button>`;
     }
     emailListDiv.innerHTML = innerHTML;
@@ -121,6 +121,7 @@ Please add it to the e-mail list or remove it entirely.`);
 	width : getWidth(),
 	height : getHeight()
 });
+    console.log(qrString);
     qrcode.makeCode(qrString);
     let image = document.getElementsByTagName('img')[0];
     setTimeout( function() {

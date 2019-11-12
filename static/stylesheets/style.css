@@ -20,24 +20,14 @@
     margin-top: 0;
 }
 
-.email-label{
+.custom-label{
     color: #000000;
     margin: 0 50px;
-}
-
-.big-label {
-    font-size: 20%;
 }
 
 .remove-button{
     color: red;
     text-align: center;
-    padding-top: 20px;
-
-    margin: 0 50px;
-
-    width: 100px;
-    height: 100px;
 }
 
 

@@ -11,27 +11,27 @@
 <body>
 <div>
     <!--region email setting-->
-    <div  class="page">
-        <label for="newEmail">new e-mail</label>
-        <input type='text' placeholder="Enter new e-mail" class="input input-border" id="newEmail"/>
+    <div  class="center">
+        <label for="newEmail" class="vertical-center left custom-label">new e-mail</label>
+        <input type='text' placeholder="Enter new e-mail" class="vertical-center right" id="newEmail"/>
         <br>
         <div id="emailListDiv">
         </div>
-        <button id="addEmailBtn" class="btn btn-primary">Add e-mail</button>
-    </div>
+        <button id="addEmailBtn">Add e-mail</button>
     <!--endregion-->
 
     <!-- region subject -->
     <br>
-    <label for="subject">Subject</label>
-    <input type="text" id="subject" placeholder="'Enter e-mail subject'" class="input input-border" value="QR code scanned."/>
+    <label for="subject" class="vertical-center left custom-label">Subject</label>
+    <input type="text" id="subject" placeholder="'Enter e-mail subject'" class="vertical-center right" value="QR code scanned."/>
     <!-- endregion -->
 
     <!-- region email   -->
     <br>
-    <label for="message">Message</label>
+    <label for="message" class="vertical-center left label">Message</label>
     <textarea id="message" placeholder="'Enter e-mail message'" class="input input-border" cols="1" rows="1">
     </textarea>
+    </div>
     <!--endregion-->
 
 
@@ -39,13 +39,15 @@
     <br>
     <br>
 
-    <label for="height">QR code height</label>
-    <input type="text" id="height" placeholder="200" value="200" class="input input-border"/>
+    <label for="height" class="vertical-center left label">QR code height</label>
+    <input type="text" id="height" placeholder="200" value="200" class="vertical-center right"/>
+    <br>
 
-    <label for="width">QR code width</label>
-    <input type="text" id="width" placeholder="200" value="200" class="input input-border"/>
+    <label for="width" class="vertical-center left label">QR code width</label>
+    <input type="text" id="width" placeholder="200" value="200" class="vertical-center right"/>
+    <br>
 
-    <button id="generateQRBtn" class="btn btn-primary">Generate QR</button>
+    <button id="generateQRBtn">Generate QR</button>
     <div id="qrCode" style="width:150pt; height:150pt; margin-top:2pt;"></div>
     <!--endregion-->
 </div>
