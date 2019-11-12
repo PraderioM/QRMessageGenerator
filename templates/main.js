@@ -19,7 +19,7 @@ function updateEmailList() {
     let innerHTML = '';
     for (let i=0; i< emailList.length; i++) {
         innerHTML += '<br>';
-        innerHTML += `<label for="email${i}" class = "vertical-center left label" >e-mail ${i+1}: ${emailList[i]}</label>`;
+        innerHTML += `<label for="email${i}" class = "vertical-center left custom-label" >e-mail ${i+1}: ${emailList[i]}</label>`;
         innerHTML += `<button class="remove-button vertical-center right" id="email${i}" onclick="removeEmail(${i})" >-</button>`;
     }
     emailListDiv.innerHTML = innerHTML;

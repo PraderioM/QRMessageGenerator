@@ -17,20 +17,24 @@
         <br>
         <div id="emailListDiv">
         </div>
-        <button id="addEmailBtn">Add e-mail</button>
+        <label for="addEmailBtn" class="vertical-center left custom-label"></label>
+        <button id="addEmailBtn" class="vertical-center right">Add e-mail</button>
     <!--endregion-->
 
     <!-- region subject -->
     <br>
+    <br>
+    <br>
     <label for="subject" class="vertical-center left custom-label">Subject</label>
-    <input type="text" id="subject" placeholder="'Enter e-mail subject'" class="vertical-center right" value="QR code scanned."/>
+    <input type="text" id="subject" placeholder="Enter e-mail subject" class="vertical-center right" value="QR code scanned."/>
     <!-- endregion -->
 
     <!-- region email   -->
     <br>
-    <label for="message" class="vertical-center left label">Message</label>
-    <textarea id="message" placeholder="'Enter e-mail message'" class="input input-border" cols="1" rows="1">
-    </textarea>
+    <br>
+    <br>
+    <label for="message" class="vertical-center left custom-label">Message</label>
+    <textarea id="message" placeholder="Enter e-mail message" rows="10" cols="50" class="bottom"></textarea>
     </div>
     <!--endregion-->
 
@@ -39,16 +43,21 @@
     <br>
     <br>
 
-    <label for="height" class="vertical-center left label">QR code height</label>
-    <input type="text" id="height" placeholder="200" value="200" class="vertical-center right"/>
+    <label for="height" class="vertical-center left custom-label">QR code height</label>
+    <input type="text" id="height" placeholder="200" value="200" class="vertical-center right size-input"/>
     <br>
 
-    <label for="width" class="vertical-center left label">QR code width</label>
-    <input type="text" id="width" placeholder="200" value="200" class="vertical-center right"/>
+    <label for="width" class="vertical-center left custom-label">QR code width</label>
+    <input type="text" id="width" placeholder="200" value="200" class="vertical-center right size-input"/>
+    <br>
     <br>
 
-    <button id="generateQRBtn">Generate QR</button>
-    <div id="qrCode" style="width:150pt; height:150pt; margin-top:2pt;"></div>
+    <label for="generateQRBtn" class="vertical-center left custom-label"></label>
+    <button id="generateQRBtn" class="vertical-center right">Generate QR</button>
+    <br>
+    <br>
+    <label for="qrCode" class="vertical-center left custom-label"></label>
+    <div id="qrCode" class="qr-display vertical-center right" ></div>
     <!--endregion-->
 </div>
 <script language="JavaScript" type="application/javascript">
