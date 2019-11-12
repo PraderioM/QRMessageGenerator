@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title> Simplex homology calculator </title>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="ISO-8859-1" />
+    <link rel="stylesheet" type="text/css" href="static/stylesheets/style.css"/>
+    <script language="JavaScript" src="main.js" type="application/javascript"></script>
+    <script language="JavaScript" src="qrcode.js" type="application/javascript"></script>
+    <noscript> you need javascript to continue </noscript>
+<body>
+<div>
+    <!--region email setting-->
+    <div  class="page">
+        <label for="newEmail">new e-mail</label>
+        <input type='text' placeholder="Enter new e-mail" class="input input-border" id="newEmail"/>
+        <br>
+        <div id="emailListDiv">
+        </div>
+        <button onclick="addEmail()" class="btn btn-primary">Add e-mail</button>
+    </div>
+    <!--endregion-->
+
+    <!-- region subject -->
+    <br>
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" placeholder="'Enter e-mail subject'" class="input input-border" value="QR code scanned."/>
+    <!-- endregion -->
+
+    <!-- region email   -->
+    <br>
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="'Enter e-mail message'" class="input input-border" cols="1" rows="1">
+    </textarea>
+    <!--endregion-->
+
+
+    <!--qr code view-->
+    <br>
+    <button onclick="generateQR()" class="btn btn-primary">Generate QR</button>
+    <!--endregion-->
+</div>
+<script language="JavaScript" type="application/javascript">
+    let emailList = [];
+</script>
+</body>
+</html>
