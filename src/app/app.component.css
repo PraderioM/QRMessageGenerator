@@ -1,0 +1,14 @@
+.data-container {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-content: center;
+  align-self: self-start;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  font-size: large;
+}

@@ -1,0 +1,118 @@
+<h1>{{header}}</h1>
+<table>
+  <!--region email setting-->
+  <tr>
+    <td><button (click)="setLanguageToEnglish()">English</button></td>
+    <td><button (click)="setLanguageToCatalan()">Catalan</button></td>
+  </tr>
+  <tr>
+    <td>{{emailLabel}}</td>
+    <td><input type='text' placeholder="{{emailPlaceHolder}}" [(ngModel)]="newEmail"/></td>
+    <td *ngIf="newEmail !== ''"><button id="addEmailBtn" (click)="addEmail()">{{addEmailButtonText}}</button><td>
+  </tr>
+  <tr *ngFor="let mail of emailList; let i = index">
+    <td></td>
+    <td>{{mail}}</td>
+    <td>
+      <button (click)="removeEmail(i)">
+        <fa-icon [icon]="faMinus" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
+      </button>
+    </td>
+  </tr>
+    <!--endregion-->
+
+  <tr></tr>
+
+    <!-- region subject -->
+  <tr>
+    <td>{{subjectLabel}}</td>
+    <td>
+      <input type="text"
+             placeholder="{{subjectPlaceholder}}"
+             value="{{subjectDefault}}" #subject/>
+    </td>
+  </tr>
+    <!-- endregion -->
+
+  <tr></tr>
+
+    <!-- region email   -->
+  <tr>
+    <td>{{messageLabel}}</td>
+    <td  colspan="2">
+      <textarea id="message"
+                placeholder="{{messagePlaceholder}}"
+                rows="10"
+                cols="50"
+                #message>
+      </textarea>
+    </td>
+  </tr>
+  <!--  endregion-->
+
+  <tr></tr>
+
+  <!--  qr code view-->
+
+  <tr>
+    <td>{{widthLabel}}</td>
+    <td>
+      <input type="number"
+             placeholder="300"
+             style="width: 50px"
+             value="300"
+             #codeWidth/>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
+    </td>
+  </tr>
+
+  <tr *ngIf="QRCodeString !== ''">
+    <td colspan="3">
+      <qrcode [qrdata]="QRCodeString"
+            [width]="codeWidth.valueAsNumber"
+            [errorCorrectionLevel]="'M'">
+
+      </qrcode>
+    </td>
+  </tr>
+  <tr *ngIf="codeGenerationError !== ''" class="error">
+    <td colspan="3">
+      {{codeGenerationError}}
+    </td>
+  </tr>
+  <tr *ngIf="QRCodeString !== ''">
+    <td colspan="3">
+      {{generatedCodeInfoHeader}}
+    </td>
+  </tr>
+  <tr *ngIf="emailInfo !== ''">
+    <td>
+      {{emailInfoLabel}}
+    </td>
+    <td>
+      {{emailInfo}}
+    </td>
+  </tr>
+  <tr *ngIf="subjectInfo !== ''">
+    <td>
+      {{subjectInfoLabel}}
+    </td>
+    <td>
+      {{subjectInfo}}
+    </td>
+  </tr>
+  <tr *ngIf="messageInfo !== ''">
+    <td>
+      {{messageInfoLabel}}
+    </td>
+    <td>
+      {{messageInfo}}
+    </td>
+  </tr>
+  <!--endregion-->
+</table>
