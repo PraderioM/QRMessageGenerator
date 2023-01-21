@@ -30,7 +30,7 @@ export class AppComponent {
   subjectInfo: string = '';
   messageInfo: string = '';
 
-  language = '';
+  codeGenerationErrorText = '';
   header = '';
   emailLabel = '';
   emailPlaceHolder = '';
@@ -54,10 +54,10 @@ export class AppComponent {
   }
 
   setLanguageToEnglish() {
-    this.language = 'eng';
+    this.codeGenerationErrorText = 'ERROR: you must specify at least one target e-mail.';
     this.header = 'Generator of QR codes for \'QRMessageSender\' app';
     this.emailLabel = 'new e-mail';
-    this.emailPlaceHolder = 'exemple@exemple.com';
+    this.emailPlaceHolder = 'example@example.com';
     this.addEmailButtonText = 'Add e-mail';
     this.subjectLabel = 'Subject';
     this.subjectPlaceholder = 'Enter e-mail subject';
@@ -68,18 +68,18 @@ export class AppComponent {
     this.codeGenerationText = 'Generate QR code';
     this.QRDownloadingText = 'Download QR code';
     this.QRCodeName = 'QRcode.png';
-    this.generatedCodeInfoHeader = 'Generated QR code contains the following information:';
+    this.generatedCodeInfoHeader = 'The generated QR code contains the following information:';
     this.emailInfoLabel = 'e-mails:';
     this.subjectInfoLabel = 'subject:';
     this.messageInfoLabel = 'message:';
   }
 
   setLanguageToCatalan() {
-    this.language = 'cat';
+    this.codeGenerationErrorText = 'ERROR: has d\'introduir almenys un correu electrònic.';
     this.header = 'Generador de codis QR per la app \'QRMessageSender\'';
     this.emailLabel = 'correu electronic nou';
     this.emailPlaceHolder = 'exemple@exemple.com';
-    this.addEmailButtonText = 'Afageix el corru';
+    this.addEmailButtonText = 'Afageix el correu';
     this.subjectLabel = 'Assumpte';
     this.subjectPlaceholder = 'Introdueixi l\'assumpte del correu';
     this.subjectDefault = 'codi QR escanejat.';
@@ -89,10 +89,31 @@ export class AppComponent {
     this.codeGenerationText = 'Genera el codi QR';
     this.QRDownloadingText = 'Baixa el codi QR';
     this.QRCodeName = 'CodiQR.png';
-    this.generatedCodeInfoHeader = 'El codi generat conté la següent informació:';
+    this.generatedCodeInfoHeader = 'El codi QR generat conté la següent informació:';
     this.emailInfoLabel = 'correus:';
     this.subjectInfoLabel = 'assumpte:';
     this.messageInfoLabel = 'missatge:';
+  }
+
+  setLanguageToSpanish() {
+    this.codeGenerationErrorText = 'ERROR: debes introducir almenos un correo electrónico.';
+    this.header = 'Generador de codigor QR para la app \'QRMessageSender\'';
+    this.emailLabel = 'correo electronico nuevo';
+    this.emailPlaceHolder = 'ejemplo@ejemplo.com';
+    this.addEmailButtonText = 'Añadir correo';
+    this.subjectLabel = 'Asunto';
+    this.subjectPlaceholder = 'Introduzca el asunto del correo';
+    this.subjectDefault = 'codigo QR escaneado.';
+    this.messageLabel = 'Mensaje';
+    this.messagePlaceholder = 'Introduzca el mensaje del correo';
+    this.widthLabel = 'anchura del codigo QR';
+    this.codeGenerationText = 'Genera el codigo QR';
+    this.QRDownloadingText = 'Descarga el codigo QR';
+    this.QRCodeName = 'CodigoQR.png';
+    this.generatedCodeInfoHeader = 'El codigo QR generado contiena la información siguiente:';
+    this.emailInfoLabel = 'correos:';
+    this.subjectInfoLabel = 'assunto:';
+    this.messageInfoLabel = 'mensaje:';
   }
 
   addEmail() {
@@ -135,11 +156,7 @@ export class AppComponent {
     // If there are no specified e-mails we show an alert and stop generation.
     if (this.emailList.length === 0) {
       this.hideQRCode();
-      if (this.language === 'eng') {
-        this.codeGenerationError = 'ERROR: you must specify at least one target e-mail.';
-      } else if (this.language === 'cat') {
-        this.codeGenerationError = 'ERROR: has d\'introduir almenys un correu electrònic.';
-      }
+      this.codeGenerationError = this.codeGenerationErrorText;
       return;
     }
 
