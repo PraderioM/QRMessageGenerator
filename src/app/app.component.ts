@@ -46,6 +46,8 @@ export class AppComponent {
   emailInfoLabel = '';
   subjectInfoLabel = '';
   messageInfoLabel = '';
+  QRDownloadingText = '';
+  QRCodeName = '';
 
   constructor() {
     this.setLanguageToEnglish();
@@ -64,6 +66,8 @@ export class AppComponent {
     this.messagePlaceholder = 'Enter e-mail message';
     this.widthLabel = 'QR code width';
     this.codeGenerationText = 'Generate QR code';
+    this.QRDownloadingText = 'Download QR code';
+    this.QRCodeName = 'QRcode.png';
     this.generatedCodeInfoHeader = 'Generated QR code contains the following information:';
     this.emailInfoLabel = 'e-mails:';
     this.subjectInfoLabel = 'subject:';
@@ -82,7 +86,9 @@ export class AppComponent {
     this.messageLabel = 'Missatge';
     this.messagePlaceholder = 'Introdueixi el missatge del correu';
     this.widthLabel = 'amplada del codi QR';
-    this.codeGenerationText = 'Generael codi QR';
+    this.codeGenerationText = 'Genera el codi QR';
+    this.QRDownloadingText = 'Baixa el codi QR';
+    this.QRCodeName = 'CodiQR.png';
     this.generatedCodeInfoHeader = 'El codi generat conté la següent informació:';
     this.emailInfoLabel = 'correus:';
     this.subjectInfoLabel = 'assumpte:';
@@ -114,17 +120,6 @@ export class AppComponent {
   }
 
   setQRCodeString(subject: string, message: string) {
-    // If there are no specified e-mails we show an alert and stop generation.
-    if (this.emailList.length === 0) {
-      this.hideQRCode();
-      if (this.language === 'eng') {
-        this.codeGenerationError = 'ERROR: you must specify at least one target e-mail.';
-      } else if (this.language === 'cat') {
-        this.codeGenerationError = 'ERROR: has d\'introduir almenys un correu electrònic.';
-      }
-      return;
-    }
-
     // If there is currently an attempt of adding a new e-mail we show
     // an alert to prevent errors of missing added mails.
     if (this.newEmail !== "") {
@@ -133,6 +128,17 @@ export class AppComponent {
         this.codeGenerationError = `WARNING: The mail ${this.newEmail} was not added to the mailing list even though it was specified. Please add it to the e-mail list or remove it entirely.`
       } else if (this.language === 'cat') {
         this.codeGenerationError = `ATENCIÓ: El correu ${this.newEmail} no s'ha afegit a la llista de correus tot i haver-se escrit. Si us plau esborri'l completament o afegeixi'l a la llista de correus.`
+      }
+      return;
+    }
+
+    // If there are no specified e-mails we show an alert and stop generation.
+    if (this.emailList.length === 0) {
+      this.hideQRCode();
+      if (this.language === 'eng') {
+        this.codeGenerationError = 'ERROR: you must specify at least one target e-mail.';
+      } else if (this.language === 'cat') {
+        this.codeGenerationError = 'ERROR: has d\'introduir almenys un correu electrònic.';
       }
       return;
     }
@@ -163,5 +169,31 @@ export class AppComponent {
 
     this.showQRCode(qrString, emailInfo, subjectInfo, messageInfo);
     return;
+  }
+
+  getQRCodeDisplay() {
+    return this.QRCodeString === ''? 'none' : 'block';
+  }
+
+  downloadQRCode(QRContext: any) {
+    const QRCanvas = QRContext.canvas;
+    console.log(QRCanvas);
+    // get image data and transform mime type to application/octet-stream
+    const canvasDataUrl = QRCanvas.toDataURL().replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+    const link = document.createElement('a'); // create an anchor tag
+
+    // set parameters for downloading
+    link.setAttribute('href', canvasDataUrl);
+    link.setAttribute('target', '_blank');
+    link.setAttribute('download', this.QRCodeName);
+
+    // compat mode for dispatching click on your anchor
+    if (document.createEvent) {
+      const evtObj = document.createEvent('MouseEvents');
+      evtObj.initEvent('click', true, true);
+        link.dispatchEvent(evtObj);
+      } else if (link.click) {
+        link.click();
+    }
   }
 }

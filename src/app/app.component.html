@@ -44,6 +44,7 @@
                 placeholder="{{messagePlaceholder}}"
                 rows="10"
                 cols="50"
+                [defaultValue]="''"
                 #message>
       </textarea>
     </td>
@@ -65,28 +66,47 @@
     </td>
   </tr>
 
-  <tr>
+  <tr *ngIf="QRCodeString === ''">
     <td colspan="3">
-      <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
+      <div class="data-container">
+        <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
+      </div>
     </td>
   </tr>
 
   <tr *ngIf="QRCodeString !== ''">
+    <td colspan="2">
+      <div class="data-container">
+        <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
+      </div>
+    </td>
+    <td>
+      <div class="data-container">
+        <button (click)="downloadQRCode(QRImage.context)">{{QRDownloadingText}}</button>
+      </div>
+    </td>
+  </tr>
+  <tr>
     <td colspan="3">
-      <qrcode [qrdata]="QRCodeString"
-            [width]="codeWidth.valueAsNumber"
-            [errorCorrectionLevel]="'M'">
+      <div class="data-container">
+        <qrcode #QRImage
+                (click)="downloadQRCode(QRImage.context)"
+                [style.display]="getQRCodeDisplay()"
+                [qrdata]="QRCodeString"
+                [width]="codeWidth.valueAsNumber"
+                [errorCorrectionLevel]="'M'">
 
-      </qrcode>
+        </qrcode>
+      </div>
     </td>
   </tr>
   <tr *ngIf="codeGenerationError !== ''" class="error">
-    <td colspan="3">
+    <td colspan="3" style="text-align: center">
       {{codeGenerationError}}
     </td>
   </tr>
-  <tr *ngIf="QRCodeString !== ''">
-    <td colspan="3">
+  <tr *ngIf="QRCodeString !== ''" class="paragraph">
+    <td colspan="3" style="text-align: center">
       {{generatedCodeInfoHeader}}
     </td>
   </tr>
