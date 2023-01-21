@@ -2,20 +2,26 @@
 <table>
   <!--region email setting-->
   <tr>
-    <td><button (click)="setLanguageToEnglish()">English</button></td>
-    <td><button (click)="setLanguageToCatalan()">Català</button></td>
-    <td><button (click)="setLanguageToSpanish()">Español</button></td>
+    <td colspan="3">
+      <div class="data-container">
+        <button class="language-button" (click)="setLanguageToEnglish()">English</button>
+        <button class="language-button" (click)="setLanguageToCatalan()">Català</button>
+        <button class="language-button" (click)="setLanguageToSpanish()">Español</button>
+      </div>
+    </td>
   </tr>
   <tr>
     <td>{{emailLabel}}</td>
     <td><input type='text' placeholder="{{emailPlaceHolder}}" [(ngModel)]="newEmail"/></td>
-    <td *ngIf="newEmail !== ''"><button id="addEmailBtn" (click)="addEmail()">{{addEmailButtonText}}</button><td>
+    <td *ngIf="newEmail !== ''">
+      <button class="add-e-mail-btn" id="addEmailBtn" (click)="addEmail()">{{addEmailButtonText}}</button>
+    <td>
   </tr>
   <tr *ngFor="let mail of emailList; let i = index">
     <td></td>
     <td>{{mail}}</td>
     <td>
-      <button (click)="removeEmail(i)">
+      <button class="remove-e-mail-btn" (click)="removeEmail(i)">
         <fa-icon [icon]="faMinus" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
       </button>
     </td>
@@ -67,23 +73,14 @@
     </td>
   </tr>
 
-  <tr *ngIf="QRCodeString === ''">
+  <tr>
     <td colspan="3">
       <div class="data-container">
-        <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
-      </div>
-    </td>
-  </tr>
-
-  <tr *ngIf="QRCodeString !== ''">
-    <td colspan="2">
-      <div class="data-container">
-        <button (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
-      </div>
-    </td>
-    <td>
-      <div class="data-container">
-        <button (click)="downloadQRCode(QRImage.context)">{{QRDownloadingText}}</button>
+        <button class="qr-generation-btn"
+                (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
+        <button *ngIf="QRCodeString !== ''"
+                class="qr-generation-btn"
+                (click)="downloadQRCode(QRImage.context)">{{QRDownloadingText}}</button>
       </div>
     </td>
   </tr>
