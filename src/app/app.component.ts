@@ -140,21 +140,20 @@ export class AppComponent {
     this.codeGenerationError = '';
   }
 
-  setQRCodeString(subject: string, message: string) {
-    // If there is currently an attempt of adding a new e-mail we show
-    // an alert to prevent errors of missing added mails.
+  getAllMails() {
+    const emailList: string[] = [];
     if (this.newEmail !== "") {
-      this.hideQRCode();
-      if (this.language === 'eng') {
-        this.codeGenerationError = `WARNING: The mail ${this.newEmail} was not added to the mailing list even though it was specified. Please add it to the e-mail list or remove it entirely.`
-      } else if (this.language === 'cat') {
-        this.codeGenerationError = `ATENCIÓ: El correu ${this.newEmail} no s'ha afegit a la llista de correus tot i haver-se escrit. Si us plau esborri'l completament o afegeixi'l a la llista de correus.`
-      }
-      return;
+      emailList.push(this.newEmail);
     }
+    return emailList.concat(this.emailList);
+  }
+
+  setQRCodeString(subject: string, message: string) {
+    // Get all e-mails including the ones not introduced yet.
+    const emailList = this.getAllMails();
 
     // If there are no specified e-mails we show an alert and stop generation.
-    if (this.emailList.length === 0) {
+    if (emailList.length === 0) {
       this.hideQRCode();
       this.codeGenerationError = this.codeGenerationErrorText;
       return;
@@ -163,8 +162,8 @@ export class AppComponent {
     let qrString = '';
 
     qrString += this.EMAIL_HEADER;
-    qrString += this.emailList.join(this.EMAIL_SEPARATOR);
-    let emailInfo = this.emailList.join(', ');
+    qrString += emailList.join(this.EMAIL_SEPARATOR);
+    let emailInfo = emailList.join(', ');
 
     qrString += this.HEADER_SEPARATOR;
 
