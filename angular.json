@@ -13,9 +13,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "qrcode"
+            ],
             "outputPath": "docs",
             "baseHref": "/QRMessageGenerator/",
-            "deployUrl": "/QRMessageGenerator/",
             "index": {
               "input": "src/index.html",
               "output": "404.html"
