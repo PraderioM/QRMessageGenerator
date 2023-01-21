@@ -1,36 +1,43 @@
 <h1>{{header}}</h1>
-<table>
-  <!--region email setting-->
+<table style="font-size: larger">
+
+  <!--region language setting-->
   <tr>
     <td colspan="3">
       <div class="data-container">
-        <button class="language-button" (click)="setLanguageToEnglish()">English</button>
-        <button class="language-button" (click)="setLanguageToCatalan()">Català</button>
-        <button class="language-button" (click)="setLanguageToSpanish()">Español</button>
+        <button class="fancy-button language-button english" (click)="setLanguageToEnglish()">English</button>
+        <button class="fancy-button language-button catalan" (click)="setLanguageToCatalan()">Català</button>
+        <button class="fancy-button language-button spanish" (click)="setLanguageToSpanish()">Español</button>
       </div>
     </td>
   </tr>
+  <!--endregion-->
+
+  <tr>
+    <div style="width:0; height: 30px"></div>
+  </tr>
+
+  <!--region QR info-->
+  <!--region email setting-->
   <tr>
     <td>{{emailLabel}}</td>
     <td><input type='text' placeholder="{{emailPlaceHolder}}" [(ngModel)]="newEmail"/></td>
     <td *ngIf="newEmail !== ''">
-      <button class="add-e-mail-btn" id="addEmailBtn" (click)="addEmail()">{{addEmailButtonText}}</button>
+      <button class="fancy-button add-e-mail-btn" id="addEmailBtn" (click)="addEmail()">{{addEmailButtonText}}</button>
     <td>
   </tr>
   <tr *ngFor="let mail of emailList; let i = index">
     <td></td>
     <td>{{mail}}</td>
     <td>
-      <button class="remove-e-mail-btn" (click)="removeEmail(i)">
+      <button class="fancy-button remove-e-mail-btn" (click)="removeEmail(i)">
         <fa-icon [icon]="faMinus" [styles]="{'stroke': 'red', 'color': 'red'}"></fa-icon>
       </button>
     </td>
   </tr>
-    <!--endregion-->
+  <!--endregion-->
 
-  <tr></tr>
-
-    <!-- region subject -->
+  <!-- region subject -->
   <tr>
     <td>{{subjectLabel}}</td>
     <td>
@@ -57,11 +64,13 @@
     </td>
   </tr>
   <!--  endregion-->
+  <!--  endregion-->
 
-  <tr></tr>
+  <tr>
+    <div style="width:0; height: 15px"></div>
+  </tr>
 
-  <!--  qr code view-->
-
+  <!--qr code view settings-->
   <tr>
     <td>{{widthLabel}}</td>
     <td>
@@ -72,18 +81,30 @@
              #codeWidth/>
     </td>
   </tr>
+  <!--endregion-->
 
+  <tr>
+    <div style="width:0; height: 20px"></div>
+  </tr>
+
+  <!--region QR-buttons-->
   <tr>
     <td colspan="3">
       <div class="data-container">
-        <button class="qr-generation-btn"
+        <button class="fancy-button qr-btn"
                 (click)="setQRCodeString(subject.value, message.value)">{{codeGenerationText}}</button>
         <button *ngIf="QRCodeString !== ''"
-                class="qr-generation-btn"
+                class="fancy-button qr-btn"
                 (click)="downloadQRCode(QRImage.context)">{{QRDownloadingText}}</button>
       </div>
     </td>
   </tr>
+  <!--endregion-->
+  <tr>
+    <div style="width:0; height: 20px"></div>
+  </tr>
+
+  <!--region QR-code-->
   <tr>
     <td colspan="3">
       <div class="data-container">

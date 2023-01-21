@@ -11,27 +11,67 @@
 .error {
   color: red;
   font-weight: bold;
-  font-size: large;
+  font-size: xx-large;
 }
 
 .paragraph {
   color: black;
   font-weight: bold;
-  font-size: large;
+  font-size: xx-large;
+}
+
+.fancy-button {
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: larger;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.fancy-button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.285);
+}
+
+.fancy-button:active {
+  box-shadow: 0 5px 16px 0 rgba(0,0,0,0.6), 0 3px 20px 0 rgba(0,0,0,0.59);
+  transform: translateY(4px);
 }
 
 .language-button {
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
 
+.english{
+  background-size: 93px 31px;
+  background-image: url("../assets/english_flag.png");
+}
+
+.spanish {
+  background-size: 100px 31px;
+  background-image: url("../assets/spanish_flag.png");
+}
+
+.catalan {
+  background-size: 79px 31px;
+  background-image: url("../assets/catalan_flag.png");
 }
 
 .add-e-mail-btn {
-
+  font-size: large;
+  font-weight: normal;
 }
 
 .remove-e-mail-btn {
-
+  font-size: large;
 }
 
-.qr-generation-btn {
-
+.qr-btn {
+  font-weight: normal;
 }
