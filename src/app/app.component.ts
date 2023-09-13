@@ -79,7 +79,7 @@ export class AppComponent {
     this.header = 'Generador de codis QR per la app \'QRMessageSender\'';
     this.emailLabel = 'correu electronic nou';
     this.emailPlaceHolder = 'exemple@exemple.com';
-    this.addEmailButtonText = 'Afageix el correu';
+    this.addEmailButtonText = 'Afegeix el correu';
     this.subjectLabel = 'Assumpte';
     this.subjectPlaceholder = 'Introdueixi l\'assumpte del correu';
     this.subjectDefault = 'codi QR escanejat.';
